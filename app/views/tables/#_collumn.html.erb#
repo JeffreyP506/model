@@ -1,0 +1,9 @@
+<p>
+  <strong>Name:</strong>
+  <%= column.name %>
+</p>
+
+<p>
+  <strong>Cname:</strong>
+  <%= column.cname %>
+</p>

@@ -1,0 +1,38 @@
+<p>
+  <strong>Name:</strong>
+  <%= @table.name %>
+</p>
+<p>
+  <strong>Cname:</strong>
+  <%= @table.cname %>
+</p>
+<p>
+  <strong>file:</strong>
+  <%= @table.file %>
+</p>
+<p>
+  <strong>ptk:</strong>
+  <%= @table.ptk %>
+</p>
+
+<h2>Columns</h2>
+<%= render @table.columns %> 
+
+<h2>Add a column:</h2>
+<%= form_for([@table, @table.columns.build]) do |f| %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :cname %><br />
+    <%= f.text_field :cname %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to "Back to Models", tables_path %>
+| <%= link_to 'Edit Model', edit_table_path(@table) %>

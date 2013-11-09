@@ -1,0 +1,15 @@
+<p>
+  <strong>Name:</strong>
+  <%= column.name %>
+</p>
+ 
+<p>
+  <strong>Cname:</strong>
+  <%= column.cname %>
+</p>
+
+<p>
+  <%= link_to 'Destroy Column', [column.table, column],
+      method: :delete,
+      data: { confirm: 'Are you sure?' } %>
+</p>

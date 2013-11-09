@@ -1,0 +1,19 @@
+<%= form_for @table do |f| %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :cname %><br />
+    <%= f.text_field :cname %>
+  </p>
+  <p>
+    <%= f.label :file %><br />
+    <%= f.text_field :file %>
+  </p>
+  <p>
+    <%= f.label :ptk %><br />
+    <%= f.text_field :ptk %>
+  </p>
+<%= f.submit "Create" %>
+<% end %>
