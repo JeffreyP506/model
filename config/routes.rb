@@ -1,5 +1,7 @@
 Model::Application.routes.draw do
 
+  get "static_pages/home"
+  get "static_pages/help"
   resources :tables do
     resources :columns
   end
