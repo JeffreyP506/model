@@ -8,9 +8,12 @@ describe "Static Pages" do
       expect(page).to have_content('Model Manager')
     end
 
-    it "should have the title 'Home'" do
-      visit '/static_pages/home'
-      expect(page).to have_title("Model Manager | Home")
+    it "should have the base title" do
+      expect(page).to have_title("Model Manager")
+    end
+
+    it "should not have a custom page title" do
+      expect(page).not_to have_title("| Home")
     end
   end
 
