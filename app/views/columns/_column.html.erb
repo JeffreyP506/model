@@ -1,15 +1,11 @@
-<p>
-  <strong>Name:</strong>
-  <%= column.name %>
-</p>
- 
-<p>
-  <strong>Cname:</strong>
-  <%= column.cname %>
-</p>
-
-<p>
-  <%= link_to 'Destroy Column', [column.table, column],
-      method: :delete,
-      data: { confirm: 'Are you sure?' } %>
-</p>
+<tr>
+    <td><%= column.name %></td>
+    <td><%= column.cname %></td>
+    <td><%= column.type %></td>
+    <td><%= column.null_ind %></td>
+    <td><%= column.pk %></td>
+    <td><%= column.note %></td>
+    <td><%= link_to 'Destroy Column', [column.table, column],
+    method: :delete,
+    data: { confirm: 'Are you sure?' } %></td>
+</tr>

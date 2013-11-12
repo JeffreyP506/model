@@ -16,7 +16,17 @@
 </p>
 
 <h2>Columns</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Cname</th>
+        <th>type</th>
+        <th>null_ind</th>
+        <th>pk</th>
+        <th>note</th>
+    </tr>
 <%= render @table.columns %> 
+</table>
 
 <h2>Add a column:</h2>
 <%= form_for([@table, @table.columns.build]) do |f| %>
@@ -28,7 +38,22 @@
     <%= f.label :cname %><br />
     <%= f.text_field :cname %>
   </p>
-  
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :type %>
+  </p>
+  <p>
+    <%= f.label :null_ind %><br />
+    <%= f.text_field :null_ind %>
+  </p>
+  <p>
+    <%= f.label :pk %><br />
+    <%= f.text_field :pk %>
+  </p>
+  <p>
+    <%= f.label :note %><br />
+    <%= f.text_field :note %>
+  </p>
   <p>
     <%= f.submit %>
   </p>
