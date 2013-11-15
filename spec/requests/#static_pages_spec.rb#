@@ -34,3 +34,5 @@ describe "Static Pages" do
 end
 it { shouldi }
 it { shoulddo something }
+
+before { skdjf }
