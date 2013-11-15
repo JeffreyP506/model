@@ -1,7 +1,10 @@
 Model::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/help"
-  get "static_pages/about"
+  get "users/new"
+  match '/signup', to: 'users#new', via: 'get'
+  match '/home', to: 'static_pages#home', via: 'get'
+  match '/help', to: 'static_pages#help', via: 'get'
+  match '/about', to: 'static_pages#about', via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
 
   resources :tables do
     resources :columns
