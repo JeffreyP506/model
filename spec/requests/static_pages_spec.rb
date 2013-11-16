@@ -32,5 +32,3 @@ describe "Static Pages" do
     it { should have_title(full_title('Contact')) }
   end
 end
-it { shouldi }
-it { shoulddo something }
