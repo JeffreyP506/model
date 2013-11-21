@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117064313) do
+ActiveRecord::Schema.define(version: 20131119025755) do
 
   create_table "columns", force: true do |t|
     t.string   "name"
     t.string   "cname"
-    t.string   "type"
+    t.string   "dtype"
     t.boolean  "null_ind"
     t.string   "pk"
     t.text     "note"

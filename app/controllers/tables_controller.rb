@@ -26,7 +26,12 @@ class TablesController < ApplicationController
   end
 
   def index
-    @tables = Table.all
+    # @search = Table.search(params[:search])
+    # @table_ids = Column.select(table_id).search(params[:search]).distinct
+    # @tables = Table.search(params[:search]).paginate(page: params[:page], per_page: 10)
+    # @tables = @search.result(:distinct => true)
+    #.paginate(page: params[:page], per_page: 10)
+    @tables = Table.joins(:columns).search(params[:search]).paginate(page: params[:page])
   end
 
   def update
@@ -52,3 +57,4 @@ class TablesController < ApplicationController
   end
 
 end
+

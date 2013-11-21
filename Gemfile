@@ -9,6 +9,10 @@ gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'activerecord-import', '>=0.4.0', :require => false
+# gem 'ransack'
+# gem 'ransack', github: https://github.com/activerecord-hackery/ransack/tree/rails-4
+gem 'ransack', github: 'activerecord-hackery/ransack',  :branch => 'rails-4'
+gem 'yard'
 
 group :development, :test do
   gem 'sqlite3', '1.3.8'

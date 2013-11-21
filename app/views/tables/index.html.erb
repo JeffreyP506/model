@@ -1,25 +1,21 @@
 <h1>Listing tables</h1>
 
-<%= link_to "New model", new_table_path %>
-
-<table>
+<%= form_tag tables_path, method: 'get' do %>
+<p><%= text_field_tag :search, params[:search] %>
+<%= submit_tag "Search", class: "btn" %></p>
+<% end %>
+<%= will_paginate %>
+<table class="table table-condensed table-responsive">
     <tr>
       <th>name</th>
       <th>cname</th>
       <th>file</th>
       <th>ptk</th>
     </tr>
-
-    <% @tables.each do |table| %>
-    <tr>
-        <td><%= table.name %></td>
-        <td><%= table.cname %></td>
-        <td><%= table.file %></td>
-        <td><%= table.ptk %></td>
-        <td><%= link_to 'Show', table %></td>
-        <td><%= link_to 'Edit', edit_table_path(table) %></td>
-        <td><%= link_to 'Destroy', table_path(table),
-                          method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
+    <%= render @tables %>
 </table>
+<%= will_paginate %>
+
+<% if current_user %>
+<%= link_to "New model", new_table_path %>
+<% end %>

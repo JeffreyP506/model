@@ -16,11 +16,11 @@
 </p>
 
 <h2>Columns</h2>
-<table>
+<table class="table table-condensed table-responsive">
     <tr>
         <th>Name</th>
         <th>Cname</th>
-        <th>type</th>
+        <th>dtype</th>
         <th>null_ind</th>
         <th>pk</th>
         <th>note</th>
@@ -28,6 +28,7 @@
 <%= render @table.columns %> 
 </table>
 
+<% if current_user %>
 <h2>Add a column:</h2>
 <%= form_for([@table, @table.columns.build]) do |f| %>
   <p>
@@ -39,8 +40,8 @@
     <%= f.text_field :cname %>
   </p>
   <p>
-    <%= f.label :type %><br />
-    <%= f.text_field :type %>
+    <%= f.label :dtype %><br />
+    <%= f.text_field :dtype %>
   </p>
   <p>
     <%= f.label :null_ind %><br />
@@ -58,6 +59,9 @@
     <%= f.submit %>
   </p>
 <% end %>
+<% end %>
 
 <%= link_to "Back to Models", tables_path %>
+<% if current_user %>
 | <%= link_to 'Edit Model', edit_table_path(@table) %>
+<% end %>
