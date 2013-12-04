@@ -5,7 +5,7 @@ class Table < ActiveRecord::Base
   validates :file, presence: true
   validates :ptk, presence: true
 
-  def self.search(search)
+  def search(search)
     if search
       @q = "%" + "#{search}" + "%"
       where('tables.name LIKE ? or tables.cname LIKE ? or columns.name LIKE ? or columns.cname LIKE ?', @q, @q, @q, @q)

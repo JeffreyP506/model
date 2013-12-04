@@ -14,6 +14,9 @@ gem 'activerecord-import', '>=0.4.0', :require => false
 gem 'ransack', github: 'activerecord-hackery/ransack',  :branch => 'rails-4'
 gem 'yard'
 
+# Deploy with Capistrano
+gem 'capistrano'
+
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
@@ -32,7 +35,7 @@ group :test do
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
 
   # Uncomment this line on OS X.
-  gem 'growl', '1.0.3'
+  # gem 'growl', '1.0.3'
 
   # Uncomment these lines on Linux.
   gem 'libnotify', '0.8.0'
@@ -55,6 +58,6 @@ group :doc do
 end
 
 group :production do
-  #gem 'pg', '0.15.1'
+  # gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
