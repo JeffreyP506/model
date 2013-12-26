@@ -67,29 +67,5 @@ class TablesController < ApplicationController
                                   [ :id, :name, :cname, :dtype, :null_ind, :pk, :note, :_destroy, :position ])
   end
 
-  def sql(table)
-    result = []
-    result << "CREATE TABLE #{table.name} ("
-    pk = []
-    columns = []
-
-    comments = ["COMMENT ON TABLE #{table.name} IS \'#{table.cname}\';"]
-
-    table.columns.each do |c|
-      column = ""
-      column += c.name.to_s + ' ' + c.dtype.to_s
-
-      pk << c.name if c.pk
-      columns << "  #{c.name} #{c.dtype}#{' NOT NULL' if c.pk}"
-      comments << "COMMENT ON COLUMN #{table.name}.#{c.name} IS \'#{c.cname}\';"
-    end
-
-    result << columns.join(",\n")
-    result << ") PARTITIONING KEY (#{table.ptk});"
-    result << "ALTER TABLE #{table.name} ADD PRIMARY KEY (#{pk.join(',')});"
-    result << comments << ""
-
-    result.join("\n")
-  end
 end
 

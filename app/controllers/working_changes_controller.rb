@@ -11,16 +11,10 @@ class WorkingChangesController < ApplicationController
   # GET /working_changes/1.json
   def show
     @working_change = WorkingChange.find(params[:id])
-    @sql = sql @table
+    @sql = working_change_sql @working_change
     respond_to do |format|
       format.html
-      format.csv { send_data @table.my_to_csv }
-      format.xls
-    end
-    @tables = @working_change.line_items
-    respond_to do |format|
-      format.html
-      format.csv { send_data @tables.my_to_csv }
+      format.csv { send_data @working_change.csv }
       format.xls
     end
   end
@@ -45,7 +39,7 @@ class WorkingChangesController < ApplicationController
         format.json { render action: 'show', status: :created, location: @working_change }
       else
         format.html { render action: 'new' }
-        format.json { render json: @working_change.errors, status: :unprocessable_entity }
+        format.json { render json: @working_change.debugs, status: :unprocessable_entity }
       end
     end
   end
@@ -59,7 +53,7 @@ class WorkingChangesController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @working_change.errors, status: :unprocessable_entity }
+        format.json { render json: @working_change.debugs, status: :unprocessable_entity }
       end
     end
   end
@@ -75,6 +69,14 @@ class WorkingChangesController < ApplicationController
     end
   end
 
+  def working_change_sql(working_change)
+    sqls = []
+    working_change.line_items.each do |line_item|
+      sqls << line_item.table.sql
+    end
+    sqls.join("\n")
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_working_change
@@ -85,4 +87,5 @@ class WorkingChangesController < ApplicationController
     def working_change_params
       params[:working_change]
     end
+
 end
