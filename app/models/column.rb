@@ -1,5 +1,6 @@
 class Column < ActiveRecord::Base
-  belongs_to :table
+  belongs_to :table, inverse_of: :columns
+  validates_presence_of :table
 
   def self.search(search)
     if search

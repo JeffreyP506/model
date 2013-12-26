@@ -4,5 +4,9 @@
   <td><%= table.file %></td>
   <td><%= table.ptk %></td>
   <td><%= link_to 'Show', table %></td>
-  <td><%= link_to_sql 'SQL', table.name, table.cname %></td>
+  <td><%= button_to '添加', line_items_path(table_id: table) %></td>
+  <% if current_user %>
+    <td><%= link_to "delete", table, method: :delete,
+            data: { confirm: "You sure?" } %></td>
+  <% end %>
 </tr>

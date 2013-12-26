@@ -11,7 +11,7 @@ describe Table do
   it { should respond_to(:cname) }
   it { should respond_to(:file) }
   it { should respond_to(:ptk) }
-  it { should respond_to(:search) }
+#  it { should respond_to(:search) }
 
   it { should be_valid }
 end

@@ -1,0 +1,14 @@
+<h2>当前变更</h2>
+<% if notice %>
+	<p id="notice"><%= notice %></p>
+<% end %>
+
+<ul>
+	<% @working_change.line_items.each do |item| %>
+		<li><%= item.table.name %></li>
+	<% end %>
+</ul>
+
+<%= button_to '导出SQL', working_change_path(format: "sql"), method: :get %>
+<%= button_to '下载CSV', working_change_path(format: "csv"), method: :get %>
+<%= button_to '清空变更', @working_change, method: :delete, data: { confirm: '确认清空?' } %>

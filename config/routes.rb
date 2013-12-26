@@ -1,4 +1,8 @@
 Model::Application.routes.draw do
+  resources :line_items
+
+  resources :working_changes
+
   resources :users do
     member do
       get :following, :followers

@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+
 describe "Table Pages" do
 
   subject { page }

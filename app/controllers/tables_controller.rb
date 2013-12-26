@@ -1,16 +1,15 @@
 class TablesController < ApplicationController
-
-  http_basic_authenticate_with name: "pjf", password: "pjfmodel", except: [:index, :show]
+  before_action :signed_in_user, except: [:index, :show]
 
   def new
     @table = Table.new
+    3.times { @table.columns.build }
   end
 
   def create
     @table = Table.new(table_params)
-
     if @table.save
-      redirect_to @table
+      redirect_to @table, notice: "Successfully created table"
     else
       render 'new'
     end
@@ -23,6 +22,12 @@ class TablesController < ApplicationController
 
   def show
     @table = Table.find(params[:id])
+    @sql = sql @table
+    respond_to do |format|
+      format.html
+      format.csv { send_data @table.my_to_csv }
+      format.xls
+    end
   end
 
   def index
@@ -32,12 +37,17 @@ class TablesController < ApplicationController
     # @tables = @search.result(:distinct => true)
     #.paginate(page: params[:page], per_page: 10)
     @tables = Table.joins(:columns).search(params[:search]).paginate(page: params[:page])
+    respond_to do |format|
+      format.html
+      format.csv { send_data @tables.my_to_csv }
+      format.xls
+    end
   end
 
   def update
     @table = Table.find(params[:id])
 
-    if @table.update(params[:post].permit(:name, :cname, :file, :ptk))
+    if @table.update(table_params)
       redirect_to @table
     else
       rencer 'edit'
@@ -53,8 +63,33 @@ class TablesController < ApplicationController
 
   private
   def table_params
-    params.require(:table).permit(:name, :cname, :file, :ptk)
+    params.require(:table).permit(:name, :cname, :file, :ptk, columns_attributes:
+                                  [ :id, :name, :cname, :dtype, :null_ind, :pk, :note, :_destroy, :position ])
   end
 
+  def sql(table)
+    result = []
+    result << "CREATE TABLE #{table.name} ("
+    pk = []
+    columns = []
+
+    comments = ["COMMENT ON TABLE #{table.name} IS \'#{table.cname}\';"]
+
+    table.columns.each do |c|
+      column = ""
+      column += c.name.to_s + ' ' + c.dtype.to_s
+
+      pk << c.name if c.pk
+      columns << "  #{c.name} #{c.dtype}#{' NOT NULL' if c.pk}"
+      comments << "COMMENT ON COLUMN #{table.name}.#{c.name} IS \'#{c.cname}\';"
+    end
+
+    result << columns.join(",\n")
+    result << ") PARTITIONING KEY (#{table.ptk});"
+    result << "ALTER TABLE #{table.name} ADD PRIMARY KEY (#{pk.join(',')});"
+    result << comments << ""
+
+    result.join("\n")
+  end
 end
 

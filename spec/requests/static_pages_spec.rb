@@ -1,5 +1,6 @@
 require 'spec_helper'
 
+
 describe "Static Pages" do
   subject { page }
 
@@ -39,7 +40,6 @@ describe "Static Pages" do
 
     describe "for non-signed-in  user" do
       it "should have " do
-        
       end
     end
   end

@@ -1,0 +1,25 @@
+<h1>Listing working_changes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @working_changes.each do |working_change| %>
+      <tr>
+        <td><%= link_to 'Show', working_change %></td>
+        <td><%= link_to 'Edit', edit_working_change_path(working_change) %></td>
+        <td><%= link_to 'Destroy', working_change, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Working change', new_working_change_path %>

@@ -1,0 +1,24 @@
+<fieldset class='column'>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %>
+
+  <%= f.label "Chinese Name" %>
+  <%= f.text_field :cname %>
+
+  <%= f.label "Data Type" %>
+  <%= f.text_field :dtype %>
+
+  <%= f.label "null?" %>
+  <%= f.check_box :null_ind %>
+
+  <%= f.label "PK?" %>
+  <%= f.check_box :pk %>
+
+  <%= f.label "Note:" %>
+  <%= f.text_area :note %>
+
+  <%= f.hidden_field :position, :class => :column_position %>
+
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "Remove Column", '#', class: "remove_fields"  %>
+</fieldset>

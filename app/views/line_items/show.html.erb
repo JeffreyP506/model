@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Table:</strong>
+  <%= @line_item.table %>
+</p>
+
+<p>
+  <strong>Working change:</strong>
+  <%= @line_item.working_change %>
+</p>
+
+<p>
+  <strong>Belongs to:</strong>
+  <%= @line_item.belongs_to %>
+</p>
+
+<%= link_to 'Edit', edit_line_item_path(@line_item) %> |
+<%= link_to 'Back', line_items_path %>

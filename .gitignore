@@ -22,3 +22,6 @@ doc/
 .ruby-*
 .secret
 .yardoc/
+*.sublime-project
+*.sublime-workspace
+

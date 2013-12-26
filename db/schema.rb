@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119025755) do
+ActiveRecord::Schema.define(version: 20131223073914) do
 
   create_table "columns", force: true do |t|
     t.string   "name"
@@ -23,10 +23,22 @@ ActiveRecord::Schema.define(version: 20131119025755) do
     t.integer  "table_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position",   default: 0
   end
 
   add_index "columns", ["name"], name: "index_columns_on_name"
+  add_index "columns", ["position"], name: "index_columns_on_position"
   add_index "columns", ["table_id"], name: "index_columns_on_table_id"
+
+  create_table "line_items", force: true do |t|
+    t.integer  "table_id"
+    t.integer  "working_change_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "line_items", ["table_id"], name: "index_line_items_on_table_id"
+  add_index "line_items", ["working_change_id"], name: "index_line_items_on_working_change_id"
 
   create_table "microposts", force: true do |t|
     t.string   "content"
@@ -69,5 +81,10 @@ ActiveRecord::Schema.define(version: 20131119025755) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+
+  create_table "working_changes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
