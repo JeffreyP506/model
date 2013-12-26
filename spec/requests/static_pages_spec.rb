@@ -36,6 +36,12 @@ describe "Static Pages" do
         it { should have_link("1 followers", href: followers_user_path(user)) }
       end
     end
+
+    describe "for non-signed-in  user" do
+      it "should have " do
+        
+      end
+    end
   end
 
   describe "Help page" do
