@@ -2,19 +2,17 @@ source 'http://ruby.taobao.org'
 ruby '2.0.0'
 #ruby-gemset=railstutorial_rails_4_0
 
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.2'
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'bcrypt-ruby', '3.1.2'
 gem 'faker', '1.1.2'
 gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
-gem 'activerecord-import', '>=0.4.0', :require => false
-gem 'ranked-model'
-# gem 'ransack'
+# gem 'activerecord-import', '>=0.4.0', :require => false
+# gem 'ranked-model'
+gem 'ransack'
 # gem 'ransack', github: https://github.com/activerecord-hackery/ransack/tree/rails-4
 # gem 'ransack', github: 'activerecord-hackery/ransack',  :branch => 'rails-4'
-gem 'yard'
-gem 'thin'
 
 # Deploy with Capistrano
 gem 'capistrano'
@@ -29,12 +27,19 @@ group :development, :test do
   gem 'childprocess', '0.3.6'
 end
 
+group :development do
+  gem 'yard'
+  gem 'thin'
+  gem 'redcarpet', '~> 2.1.1'
+end
+
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails', '4.2.0'
   gem 'cucumber-rails', '1.3.0', :require => false
-  gem 'database_cleaner', github: 'bmabey/database_cleaner'
+  # gem 'database_cleaner', github: 'bmabey/database_cleaner'
+  gem 'database_cleaner', :git => 'https://github.com/bmabey/database_cleaner.git'
 
   # Uncomment this line on OS X.
   # gem 'growl', '1.0.3'
@@ -61,6 +66,6 @@ group :doc do
 end
 
 group :production do
-  # gem 'pg', '0.15.1'
+  gem 'pg', '0.15.1'
   gem 'rails_12factor', '0.0.2'
 end
