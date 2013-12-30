@@ -5,7 +5,7 @@ describe "Static Pages" do
   subject { page }
 
   describe "Home page" do
-    before { visit root_path }
+    before { visit home_path }
 
     it { should have_content('Model Manager') }
     it { should have_title(full_title('')) }
@@ -17,8 +17,11 @@ describe "Static Pages" do
         FactoryGirl.create(:micropost, user: user, content: "Lorem ipsum")
         FactoryGirl.create(:micropost, user: user, content: "Dolor sit amet")
         sign_in user
-        visit root_path
+        visit home_path
       end
+
+      it { should_not have_content('Sign in') }
+      it { should_not have_content('Sign up now!') }
 
       it "should render the user's feed" do
         user.feed.each do |item|
@@ -39,8 +42,8 @@ describe "Static Pages" do
     end
 
     describe "for non-signed-in  user" do
-      it "should have " do
-      end
+      it { should have_content('Sign in') }
+      it { should have_content('Sign up now!') }
     end
   end
 
