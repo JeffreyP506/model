@@ -38,7 +38,7 @@ class TablesController < ApplicationController
     # @tables = Table.search(params[:search]).paginate(page: params[:page], per_page: 10)
     # @tables = @search.result(:distinct => true)
     #.paginate(page: params[:page], per_page: 10)
-    @tables = Table.joins(:columns).search(params[:search]).paginate(page: params[:page])
+    @tables = Table.joins(:columns).search(params[:search]).distinct.paginate(page: params[:page])
     respond_to do |format|
       format.html
       format.csv { send_data @tables.my_to_csv }
