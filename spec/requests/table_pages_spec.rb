@@ -10,5 +10,7 @@ describe "Table Pages" do
 
     it { should have_selector('h1', text: "Listing tables") }
     it { should have_title(full_title('Listing tables')) }
+    it "should return same table once only"
+    it "should disable the button after added to working_change"
   end
 end

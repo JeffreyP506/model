@@ -4,7 +4,7 @@
   <td><%= table.file %></td>
   <td><%= table.ptk %></td>
   <td><%= link_to 'Show', table %></td>
-  <td><%= button_to 'Add to change', line_items_path(table_id: table), remote: true %></td>
+  <td><%= button_to '添加到变更', line_items_path(table_id: table), remote: true, class: "btn" %></td>
   <% if current_user %>
     <td><%= link_to "delete", table, method: :delete,
             data: { confirm: "You sure?" } %></td>

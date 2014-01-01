@@ -15,6 +15,14 @@ describe "WorkingChanges" do
 	    it { should have_content('Download CSV') }
 	    it { should have_content('Clear') }
 	  end
+
+	  describe "Remove table from working_change" do
+	  	it "should have button 'Remove'"
+	  end
+
+	  describe "Add new table" do
+	  	it "should have button 'Add new table'"
+	  end
   end
 
 end
