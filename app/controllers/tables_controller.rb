@@ -1,5 +1,7 @@
 class TablesController < ApplicationController
+  include CurrentChange
   before_action :signed_in_user, except: [:index, :show]
+  before_action :set_working_change, only: :index
 
   def new
     @table = Table.new
@@ -22,7 +24,7 @@ class TablesController < ApplicationController
 
   def show
     @table = Table.find(params[:id])
-    @sql = sql @table
+    @sql = @table.sql
     respond_to do |format|
       format.html
       format.csv { send_data @table.my_to_csv }

@@ -30,12 +30,13 @@ class LineItemsController < ApplicationController
     @line_item = @working_change.add_table(table.id)
 
     respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to @line_item.working_change, notice: 'Line item was successfully created.' }
+      if @line_item
+        @line_item.save
+        format.html { redirect_to tables_path }
+        format.js { @current_item = @line_item }
         format.json { render action: 'show', status: :created, location: @line_item }
       else
-        format.html { render action: 'new' }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.html { redirect_to tables_path, notice: 'Table already added before' }
       end
     end
   end

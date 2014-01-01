@@ -1,0 +1,10 @@
+<table>
+	<% @working_change.line_items.each do |item| %>
+		<%= render item %>
+	<% end %>
+</table>
+
+<%= link_to 'working_change', @working_change %>
+
+<%= button_to '下载CSV', working_change_path(@working_change, format: "csv"), method: :get %>
+<%= button_to '清空变更', @working_change, method: :delete, data: { confirm: '确认清空?' }, remote: true %>

@@ -1,17 +1,7 @@
-<h2>当前变更</h2>
 <% if notice %>
 	<p id="notice"><%= notice %></p>
 <% end %>
 
-<ul>
-	<% @working_change.line_items.each do |item| %>
-		<li><%= item.table.name %></li>
-	<% end %>
-</ul>
+<%= @working_change %>
 
-<div id="sql">
-	<p>建表语句</p>
-	<%= text_area_tag 'sql', @sql %>
-</div>
-<%= button_to '下载CSV', working_change_path(@working_change, format: "csv"), method: :get %>
-<%= button_to '清空变更', @working_change, method: :delete, data: { confirm: '确认清空?' } %>
+<%= render 'sql' %>

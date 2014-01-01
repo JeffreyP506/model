@@ -1,11 +1,20 @@
 require 'spec_helper'
 
 describe "WorkingChanges" do
-  describe "GET /working_changes" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get working_changes_path
-      response.status.should be(200)
-    end
+  describe "WorkingChange" do
+  	pending "not necessary" do
+	    subject { page }
+
+	    before {  }
+
+	    working_change = stub('working_change')
+	    visit working_change_path(working_change)
+
+	    it { should have_title('Working change') }
+	    it { should have_content('Working change') }
+	    it { should have_content('Download CSV') }
+	    it { should have_content('Clear') }
+	  end
   end
+
 end

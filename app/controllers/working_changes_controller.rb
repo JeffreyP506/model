@@ -65,6 +65,7 @@ class WorkingChangesController < ApplicationController
     session[:change_id] = nil
     respond_to do |format|
       format.html { redirect_to tables_url, notice: '当前变更为空' }
+      format.js
       format.json { head :no_content }
     end
   end

@@ -1,13 +1,27 @@
 <% provide(:title, 'Listing tables') %>
 <h1>Listing tables</h1>
 
-<%= form_tag tables_path, method: 'get' do %>
-<p><%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", class: "btn" %></p>
-<% end %>
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        Working Change
+      </h1>
+    </section>
+    <section>
+    	<div id="working_change">
+      <%= render @working_change %>
+	    </div>
+    </section>
+  </aside>
+  <div class="span8">
+  	<%= form_tag tables_path, method: 'get' do %>
+		<p><%= text_field_tag :search, params[:search] %>
+		    <%= submit_tag "Search", class: "btn" %></p>
+		<% end %>
 
-<%= will_paginate %>
-<table class="table table-condensed table-responsive">
+  	<%= will_paginate %>
+    <table class="table table-condensed table-responsive">
     <tr>
         <th>name</th>
         <th>cname</th>
@@ -15,9 +29,10 @@
         <th>ptk</th>
     </tr>
     <%= render @tables %>
-</table>
-<%= will_paginate %>
-
+	  </table>
+    <%= will_paginate %>
+  </div>
+</div>
 <% if current_user %>
     <%= link_to "New model", new_table_path %>
 <% end %>
