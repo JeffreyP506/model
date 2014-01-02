@@ -2,6 +2,14 @@
 	<p id="notice"><%= notice %></p>
 <% end %>
 
-<%= @working_change %>
-
 <%= render 'sql' %>
+
+<table>
+	<% @working_change.line_items.each do |item| %>
+		<%= render item %>
+	<% end %>
+</table>
+
+<%= link_to '新增模型', new_table_path, class: "btn btn-mini" %>
+<%= link_to '下载CSV', working_change_path(@working_change, format: "csv"), method: :get, class: "btn btn-mini" %>
+<%= link_to '清空变更', @working_change, method: :delete, data: { confirm: '确认清空?' }, class: "btn btn-mini btn-danger" %>

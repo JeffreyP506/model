@@ -6,8 +6,7 @@
 <td><%= column.pk %></td>
 <td><%= column.note %></td>
 <% if current_user %>
-    <td><%= link_to 'Destroy Column', [column.table, column],
-    method: :delete,
-     data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to '删除字段', [column.table, column],
+    method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %></td>
 <% end %>
 </tr>

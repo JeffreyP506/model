@@ -4,6 +4,7 @@
 	<% end %>
 </table>
 
-<%= link_to 'SQL', @working_change, method: :get, class: "btn" %>
-<%= link_to '下载CSV', working_change_path(@working_change, format: "csv"), method: :get, class: "btn" %>
-<%= link_to '清空变更', @working_change, method: :delete, data: { confirm: '确认清空?' }, remote: true, class: "btn btn-danger" %>
+<%= link_to '新增模型', new_table_path, class: "btn btn-mini" %>
+<%= link_to 'SQL', @working_change, method: :get, class: "btn btn-mini" %>
+<%= link_to '下载CSV', working_change_path(@working_change, format: "csv"), method: :get, class: "btn btn-mini" %>
+<%= link_to '清空变更', @working_change, method: :delete, data: { confirm: '确认清空?' }, remote: true, class: "btn btn-mini btn-danger" %>

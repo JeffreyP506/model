@@ -3,10 +3,10 @@
   <td><%= table.cname %></td>
   <td><%= table.file %></td>
   <td><%= table.ptk %></td>
-  <td><%= link_to 'Show', table %></td>
-  <td><%= button_to '添加到变更', line_items_path(table_id: table), remote: true, class: "btn" %></td>
+  <td><%= link_to '查看', table, class: "btn btn-mini" %></td>
+  <td><%= button_to '添加到变更', line_items_path(table_id: table), remote: true, class: "btn btn-mini" %></td>
   <% if current_user %>
-    <td><%= link_to "delete", table, method: :delete,
-            data: { confirm: "You sure?" } %></td>
+    <td><%= link_to "删除", table, method: :delete,
+            data: { confirm: "确定删除模型?" }, class: "btn btn-mini btn-danger" %></td>
   <% end %>
 </tr>

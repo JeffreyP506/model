@@ -52,7 +52,7 @@ class TablesController < ApplicationController
     if @table.update(table_params)
       redirect_to @table
     else
-      rencer 'edit'
+      render 'edit'
     end
   end
 

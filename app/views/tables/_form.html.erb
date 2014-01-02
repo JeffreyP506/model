@@ -1,5 +1,5 @@
-<%= form_for @table do |f| %>
-<div class="field">
+<%= form_for @table, html: { class: "form-inline" } do |f| %>
+<div class="field form-group">
   <%= f.label "Name" %>
   <%= f.text_field :name %>
 

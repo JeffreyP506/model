@@ -15,7 +15,7 @@
   <%= @table.ptk %>
 </p>
 
-<h2>Columns</h2>
+<h2>字段列表</h2>
 <div id='columns'>
 <table class="table table-condensed table-responsive">
     <tr>
@@ -32,7 +32,7 @@
 </div>
 <%= text_area_tag 'sql', @sql %>
 
-<%= link_to "Back to Models", tables_path %>
+<%= link_to "返回模型列表", tables_path, class: "btn btn-mini" %>
 <% if current_user %>
-| <%= link_to 'Edit Model', edit_table_path(@table) %>
+| <%= link_to '修改', edit_table_path(@table), class: "btn btn-mini" %>
 <% end %>
